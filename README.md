@@ -14,6 +14,8 @@ https://k8s.extension.sh
 
 ## How to use it
 
+![](/docs/static/k8s-search-extension.gif)
+
 Input keyword **k** in the address bar, press `Space` to activate the search bar. Then enter any keyword
 you want to search.
 
