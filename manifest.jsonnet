@@ -6,7 +6,7 @@ local icons() = {
   for size in ['16', '48', '128']
 };
 
-local name = 'k8s Search Extension';
+local name = 'Kubernetes Search Extension';
 local version = '0.1';
 local keyword = 'k';
 local description = 'The ultimate search extension for Kubernetes';

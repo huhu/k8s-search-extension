@@ -1,8 +1,8 @@
 <img align="right" width="200" src="extension/logo.png">
 
-# k8s-search-extension
+# Kubernetes Search Extension
 
-[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/ennpfpdlaclocpomkiablnmbppdnlhoh.svg)]()
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/ljgnebfhkddniojgccmhnajeapfnklgh.svg)]()
 [![Mozilla Add-on](https://img.shields.io/amo/v/k8s-search-extension?color=%2320123A)](https://addons.mozilla.org/firefox/addon/k8s-search-extension/)
 [![license-mit](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/huhu/rust-search-extension/blob/master/LICENSE-MIT)
 [![license-apache](https://img.shields.io/badge/license-Apache-yellow.svg)](https://github.com/huhu/rust-search-extension/blob/master/LICENSE-APACHE)
