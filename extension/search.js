@@ -33,20 +33,38 @@ class DocsSearcher {
         }
     }
 
+    // Search the docs by title.
+    // The search is case-insensitive and supports pipe operation.
+    // If search keywords separated by space, the search result of 
+    // the latter keyword will be filtered from result of the former keyword.
+    // e.g. "pod create" will match ["Create Pods", "Delete Pods"] first, 
+    // then narrow down to ["Create Pods"].
     search(query) {
-        query = query.replace(/[%\s]/ig, "").toLowerCase();
+        let titles = this.titles;
         let results = [];
-        for (let title of this.titles) {
-            if (title.length < query.length) continue;
-            let index = title.indexOf(query);
-            if (index > -1) {
-                results.push({ title, matchIndex: index });
-            }
-        }
+        query.split(" ").forEach(keyword => {
+            results = this.searchTitle(titles, keyword);
+            titles = results.map(item => item.title);
+        });
+
         return results.sort((a, b) => a.title.length - b.title.length)
             .flatMap(item => {
                 return this.docs[item.title];
             });
+    }
+
+    searchTitle(titles, keyword) {
+        let results = [];
+        keyword = keyword.replace(/[%\s]/ig, "").toLowerCase();
+        for (let title of titles) {
+            if (title.length < keyword.length) continue;
+            let index = title.indexOf(keyword);
+            if (index > -1) {
+                results.push({ title, matchIndex: index });
+            }
+        }
+
+        return results;
     }
 }
 
