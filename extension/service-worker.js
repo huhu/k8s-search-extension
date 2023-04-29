@@ -9,5 +9,6 @@ importScripts(
     'core/command/open.js',
     'core/command/simple.js',
     'index.js',
+    'search.js',
     'main.js',
 );

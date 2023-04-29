@@ -6,15 +6,16 @@ const c = new Compat();
 
     const defaultSuggestion = `The ultimate search extension for Kubernetes.`;
     const omnibox = new Omnibox(defaultSuggestion, c.omniboxPageSize());
+    const searcher = new DocsSearcher(docsIndex);
 
     omnibox.bootstrap({
         onSearch: (query) => {
             return searcher.search(query);
         },
-        onFormat: (index, item) => {
+        onFormat: (_, item) => {
             return {
-                content: ``,
-                description: ``,
+                content: `https://kubernetes.io/docs/${item.path}#${item.anchor}`,
+                description: `${[...item.parentTitles.map(t => c.escape(t)), c.match(c.escape(item.title))].join(" > ")}`,
             };
         },
         afterNavigated: (query, result) => {

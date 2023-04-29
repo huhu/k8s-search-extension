@@ -116,8 +116,8 @@ func parseToc(filepath string) ([]SearchItem, error) {
 	items := []SearchItem{}
 	doc.Find("nav#TableOfContents>ul a").Each(func(i int, s *goquery.Selection) {
 		anchor := s.AttrOr("href", "")
-		if anchor == "#what-s-next" || anchor == "#whats-next" {
-			// Ignore "what's next" section
+		// Ignore those section
+		if anchor == "#what-s-next" || anchor == "#whats-next" || anchor == "#before-you-begin" {
 			return
 		}
 		title := s.Contents().Text()
