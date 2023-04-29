@@ -8,5 +8,6 @@ importScripts(
     'core/command/manager.js',
     'core/command/open.js',
     'core/command/simple.js',
+    'index.js',
     'main.js',
 );

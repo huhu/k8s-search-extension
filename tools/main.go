@@ -11,6 +11,11 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
+var (
+	docsPath  = ""
+	indexPath = "../extension/index.js"
+)
+
 type SearchItem struct {
 	Title    string       `json:"title"`
 	Href     string       `json:"href"`
@@ -18,8 +23,6 @@ type SearchItem struct {
 	Anchor   string       `json:"anchor"`
 	Children []SearchItem `json:"children"`
 }
-
-var docsPath = ""
 
 func main() {
 	// Receive path to docs directory as argument
@@ -48,7 +51,9 @@ func main() {
 		log.Fatal(err)
 	}
 	// write json data to file
-	err = ioutil.WriteFile("data.json", json, os.ModePerm)
+	searchIndex := fmt.Sprintf("let docsIndex=JSON.parse(`%s`);", string(json))
+	err = ioutil.WriteFile(indexPath, []byte(searchIndex), os.ModePerm)
+	// err = ioutil.WriteFile("index.json", json, os.ModePerm)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -119,4 +124,18 @@ func parseToc(filepath string) ([]SearchItem, error) {
 		items = append(items, SearchItem{Title: title, Anchor: anchor})
 	})
 	return items, nil
+}
+
+// Custom JSON marshaler for SearchItem
+func (s SearchItem) MarshalJSON() ([]byte, error) {
+	var children []SearchItem
+	if s.Children != nil && len(s.Children) > 0 {
+		children = s.Children
+	}
+	return json.Marshal(&[]interface{}{
+		strings.ReplaceAll(s.Title, "\"", "\\\""),
+		s.Path,
+		s.Anchor,
+		children,
+	})
 }

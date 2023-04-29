@@ -20,7 +20,7 @@ else
   local manifest_v2 = import 'core/manifest.libsonnet';
   manifest_v2.new(name, keyword, description, version)
   .addBackgroundScripts(utils.js_files('command', ['help']))
-  .addBackgroundScripts(['shortcuts.js', 'search.js', 'index-manager.js', 'main.js'])
+  .addBackgroundScripts(['index.js', 'search.js', 'main.js'])
 ;
 
 json
