@@ -70,14 +70,18 @@
 
 @media screen and (max-width: 768px) {
   .logo {
-    font-size: 16px;
-    margin: 10px;
+    font-size: 20px;
+    margin: 25px auto;
     text-shadow: 1.5px 1.5px 0 #000, -1.5px -1.5px 0 #000, 1.5px -1.5px 0 #000, -1.5px 1.5px 0 #000, 1.5px 1.5px 0 #000;
 
     img {
       width: 25px;
       margin: 0 10px 0 0;
     }
+  }
+    
+  .nav-item {
+    font-size: 16px;
   }
 
   main {
