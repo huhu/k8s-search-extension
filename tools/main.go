@@ -135,7 +135,7 @@ func (s SearchItem) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&[]interface{}{
 		strings.ReplaceAll(s.Title, "\"", "\\\""),
 		s.Path,
-		s.Anchor,
+		strings.TrimPrefix(s.Anchor, "#"),
 		children,
 	})
 }
