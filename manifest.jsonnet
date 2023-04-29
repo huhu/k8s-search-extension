@@ -19,10 +19,9 @@ local json = if std.member(['chrome', 'edge'], browser) then
 else
   local manifest_v2 = import 'core/manifest.libsonnet';
   manifest_v2.new(name, keyword, description, version)
-  .addBackgroundScripts(utils.js_files('command', ['help']))
   .addBackgroundScripts(['index.js', 'search.js', 'main.js'])
 ;
 
 json
 .addIcons(icons())
-.addPermissions(['storage', 'unlimitedStorage'])
+.addPermissions(['storage'])
