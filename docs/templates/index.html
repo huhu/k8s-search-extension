@@ -1,0 +1,97 @@
+{% extends "juice/templates/index.html" %}
+{% block head %}
+<meta name="keywords"
+      content="K8S Search Extension">
+<meta itemprop="name"
+      content="{{ config.extra.meta_title }}">
+<meta itemprop="description"
+      content="{{ config.extra.meta_description }}">
+<meta itemprop="image" content="https://k8s.extension.sh/banner.png">
+
+<meta property="og:url" content="https://k8s.extension.sh">
+<meta property="og:type" content="website">
+<meta property="og:title"
+      content="{{ config.extra.meta_title }}">
+<meta property="og:description"
+      content="{{ config.extra.meta_description }}">
+<meta property="og:image" content="https://k8s.extension.sh/banner.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@_huhuio">
+<meta name="twitter:creator" content="@_huhuio">
+<meta name="twitter:title"
+      content="{{ config.extra.meta_title }}">
+<meta name="twitter:description"
+      content="{{ config.extra.meta_description }}">
+<meta name="twitter:image" content="https://k8s.extension.sh/banner.png">
+<link rel="stylesheet" href="{{ get_url(path="index.css") }}">
+{% endblock head %}
+{% block hero %}
+<section style="padding:10px">
+    <h1 class="text-center heading-text">
+        The ultimate search extension for Kubernetes
+    </h1>
+    <h3 class="text" style="text-align: center;">
+        Input keyword <b>k</b> then press <code>Space</code> in the address bar to get started. Just that easy!
+    </h3>
+    <div style="margin-top: 50px; display: flex; flex-direction: column; align-items: center">
+        <a class="subtitle-text" style="text-decoration: underline; margin: 10px"
+           href="https://github.com/huhu/k8s-search-extension/releases">
+            Current version 0.1.0
+        </a>
+        <a class="btn-download chrome"
+           href="https://chrome.google.com/webstore/detail/cc++-search-extension/ifpcmhciihicaljnhgobnhoehoabidhd"
+           target="_blank">
+            Install to Chrome
+        </a>
+        <a class="btn-download firefox" href="https://addons.mozilla.org/en-US/firefox/addon/c-c-search-extension/"
+           target="_blank">
+            Install to Firefox
+        </a>
+        <a class="btn-download edg"
+           href="https://microsoftedge.microsoft.com/addons/detail/ffajabficigcddnckikojejmkammkmpe"
+           target="_blank">
+            Install to Edge
+        </a>
+    </div>
+</section>
+<img class="demonstration-gif" src="{{ get_url(path="icons/ppst.svg") }}" alt="k8s-search-extension">
+<div class="explore-more text"
+     onclick="document.getElementById('features').scrollIntoView({behavior: 'smooth'})">
+    Explore More ⇩
+</div>
+<script>
+    function mobilizeDownloadButton() {
+        let navigator = window.navigator.userAgent.toLocaleLowerCase();
+        if (window.innerWidth < 768) {
+            document.querySelectorAll('.btn-download').forEach((element) => {
+                element.classList.add('hide');
+            });
+            let target = ['firefox', 'edg'].find(item => navigator.includes(item)) || 'chrome';
+            document.querySelector(`.${target}`).classList.remove('hide');
+        } else {
+            document.querySelectorAll('.btn-download').forEach((element) => {
+                element.classList.remove('hide');
+            });
+        }
+    }
+    mobilizeDownloadButton();
+    window.onresize = function () { mobilizeDownloadButton() };
+</script>
+{% endblock %}
+
+{% block sidebar %}
+<div class="sidebar">
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CEBIL27E&placement=extensionsh" id="_carbonads_js"></script>
+</div>
+{% endblock %}
+
+{% block footer %}
+<iframe id="footer" src="https://huhu.io/extension-footer.html"
+        style="display:block;width:100%;border:none;"></iframe>
+<script>
+    window.onmessage = e => {
+        e.data.hasOwnProperty("frameHeight") && (document.getElementById("footer").style.height = `${e.data.frameHeight}px`)
+    }
+</script>
+{% endblock footer %}

@@ -1,0 +1,102 @@
+@import "carbon";
+
+.content img {
+  width: 75%;
+  height: auto;
+}
+
+.demonstration-gif {
+  max-width: 55%;
+  padding: 20px;
+}
+
+.btn-download {
+  font-family: "Fira Sans", sans-serif;
+  color: black;
+  background-color: #FDFDFD;
+  border-radius: 12px;
+  margin: 15px;
+  padding: 10px 0 10px 20px;
+  font-size: 20px;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-size: 24px 24px;
+  background-position: 20px;
+  width: 240px;
+}
+
+.chrome {
+  background-image: url("chrome.svg");
+}
+
+.firefox {
+  background-image: url("firefox.svg");
+}
+
+.edg {
+  background-image: url("edge.svg");
+}
+
+.hide {
+  display: none;
+}
+
+.sidebar {
+  width: 215px;
+}
+
+.nav-item {
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 1px 1px 0 #272343, -1px -1px 0 #272343, 1px -1px 0 #272343, -1px 1px 0 #272343, 1px 1px 0 #272343;
+  color: var(--primary-color);
+}
+
+.nav-item:hover {
+  color: var(--primary-color);
+}
+
+.logo {
+  font-family: "Alfa Slab One", serif;
+  font-size: 32px;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  margin: 0 40px;
+  text-shadow: 3px 3px 0 #272343, -3px -3px 0 #272343, 3px -3px 0 #272343, -3px 3px 0 #272343, 3px 3px 0 #272343;
+}
+
+@media screen and (max-width: 768px) {
+  .logo {
+    font-size: 16px;
+    margin: 10px;
+    text-shadow: 1.5px 1.5px 0 #000, -1.5px -1.5px 0 #000, 1.5px -1.5px 0 #000, -1.5px 1.5px 0 #000, 1.5px 1.5px 0 #000;
+
+    img {
+      width: 25px;
+      margin: 0 10px 0 0;
+    }
+  }
+
+  main {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 215px;
+    margin: 2rem auto 0;
+  }
+
+  .explore-more, .demonstration-gif {
+    display: none;
+  }
+
+  .content img {
+    width: 100%;
+    height: auto;
+  }
+}
