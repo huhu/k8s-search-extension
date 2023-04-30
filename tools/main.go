@@ -66,10 +66,7 @@ func traverseSidebarList(depth int, s *goquery.Selection) []SearchItem {
 
 	items := []SearchItem{}
 	s.ChildrenFiltered("li").Each(func(i int, child *goquery.Selection) {
-		// title := child.Text()
-		title := ""
-		path := ""
-		href := ""
+		title, path, href := "", "", ""
 		label := child.ChildrenFiltered("label")
 		if label != nil {
 			title = label.Text()
@@ -78,8 +75,10 @@ func traverseSidebarList(depth int, s *goquery.Selection) []SearchItem {
 				// Get the last part of href pat
 				href = strings.TrimSuffix(h, "/")
 
-				index := strings.LastIndex(href, "/")
-				path = href[index+1:]
+				// Strip the parent path from href, escpecially for the corner case of:
+				// https://kubernetes.io/docs/reference/kubernetes-api/common-parameters/common-parameters/
+				parts := strings.Split(href, "/")
+				path = strings.Join(parts[depth+1:], "/")
 			}
 		}
 
