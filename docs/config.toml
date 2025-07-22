@@ -20,6 +20,7 @@ highlight_theme = "inspired-github"
 juice_logo_name = "K8S Search Extension"
 juice_logo_path = "logo.svg"
 juice_extra_menu = [
+    { title = "Geddle", link = "https://geddle.com" },
     { title = "Github", link = "https://github.com/huhu/k8s-search-extension" },
 ]
 meta_title = "K8S Search Extension"
